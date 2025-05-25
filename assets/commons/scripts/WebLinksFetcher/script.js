@@ -132,7 +132,6 @@ class AssetViewer {
 
     parseAssetUrl(url) {
         try {
-            // Parse GitHub raw URL to extract path information
             const urlObj = new URL(url);
             const pathParts = urlObj.pathname.split('/').filter(part => part);
             
@@ -145,12 +144,19 @@ class AssetViewer {
             const fileName = pathParts[pathParts.length - 1];
             const pathSegments = assetPath.split('/');
             
-            // Determine type based on path structure
-            let type = 'projects'; // default
-            if (pathSegments[0] === 'brands') {
+            // Determine type and owner
+            let type = 'projects';
+            let owner = 'misc';
+            
+            if (pathSegments[0] === 'brands' && pathSegments.length > 1) {
                 type = 'brands';
-            } else if (pathSegments[0] === 'clients') {
+                owner = pathSegments[1]; // e.g., numerimondes, thebestrecruit
+            } else if (pathSegments[0] === 'clients' && pathSegments.length > 2) {
                 type = 'clients';
+                owner = pathSegments[2]; // e.g., le-cafe-litteraire-de-fes
+            } else if (pathSegments[0] === 'projects' && pathSegments.length > 1) {
+                type = 'projects';
+                owner = pathSegments[1]; // e.g., webkenrel
             }
             
             // Get file extension and size info
@@ -169,8 +175,8 @@ class AssetViewer {
                 isImage: isImage,
                 isDocument: isDocument,
                 isCode: isCode,
-                category: this.getCategory(pathSegments),
-                size: 'Unknown' // We can't determine size from URL alone
+                category: owner, // Using category for owner to maintain frontend compatibility
+                size: 'Unknown'
             };
         } catch (error) {
             console.error('Error parsing asset URL:', url, error);
@@ -180,13 +186,6 @@ class AssetViewer {
 
     generateId(url) {
         return btoa(url).replace(/[^a-zA-Z0-9]/g, '').substring(0, 16);
-    }
-
-    getCategory(pathSegments) {
-        if (pathSegments.length > 1) {
-            return pathSegments[1]; // Second segment usually indicates category
-        }
-        return 'misc';
     }
 
     setLoading(loading) {
@@ -218,11 +217,9 @@ class AssetViewer {
     setView(view) {
         this.currentView = view;
         
-        // Update button states
         this.gridViewBtn.classList.toggle('active', view === 'grid');
         this.tableViewBtn.classList.toggle('active', view === 'table');
         
-        // Show/hide views with transition
         if (view === 'grid') {
             this.tableView.classList.add('hidden');
             this.gridView.classList.remove('hidden');
@@ -260,7 +257,7 @@ class AssetViewer {
             filtered = filtered.filter(asset => asset.type === this.currentFilter);
         }
         
-        // Apply search filter
+        // Apply search filter including owner
         if (this.searchQuery) {
             filtered = filtered.filter(asset => 
                 asset.name.toLowerCase().includes(this.searchQuery) ||
@@ -291,11 +288,8 @@ class AssetViewer {
         
         this.assetGrid.innerHTML = this.filteredAssets.map(asset => this.createAssetCard(asset)).join('');
         
-        // Add click listeners
         this.assetGrid.querySelectorAll('.asset-card').forEach((card, index) => {
             card.addEventListener('click', () => this.showAssetModal(this.filteredAssets[index]));
-            
-            // Add entrance animation
             setTimeout(() => {
                 card.classList.add('card-enter');
             }, index * 50);
@@ -307,7 +301,6 @@ class AssetViewer {
         
         this.assetTableBody.innerHTML = this.filteredAssets.map(asset => this.createTableRow(asset)).join('');
         
-        // Add click listeners for preview buttons
         this.assetTableBody.querySelectorAll('.table-preview-btn').forEach((btn, index) => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -334,7 +327,7 @@ class AssetViewer {
                 <div class="asset-info">
                     <h3>${this.escapeHtml(asset.name)}</h3>
                     <p>${this.escapeHtml(asset.category)}</p>
-                    <div class="asset-path">${this.escapeHtml(asset.path)}</div>
+                    <div class="asset-path" title="${this.escapeHtml(asset.path)}">${this.escapeHtml(asset.path)}</div>
                 </div>
             </div>
         `;
@@ -434,7 +427,6 @@ class AssetViewer {
         
         this.modalBody.innerHTML = previewContent + infoContent;
         
-        // Set up download and copy buttons
         this.downloadBtn.onclick = () => this.downloadAsset(asset);
         this.copyLinkBtn.onclick = () => this.copyAssetLink(asset);
         
@@ -480,7 +472,6 @@ class AssetViewer {
         try {
             await navigator.clipboard.writeText(asset.fullPath);
             
-            // Show feedback
             const originalText = this.copyLinkBtn.innerHTML;
             this.copyLinkBtn.innerHTML = `
                 <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -496,7 +487,6 @@ class AssetViewer {
         } catch (error) {
             console.error('Failed to copy link:', error);
             
-            // Fallback: show the link for manual copying
             const textArea = document.createElement('textarea');
             textArea.value = asset.fullPath;
             document.body.appendChild(textArea);
@@ -504,7 +494,6 @@ class AssetViewer {
             document.execCommand('copy');
             document.body.removeChild(textArea);
             
-            // Show feedback
             const originalText = this.copyLinkBtn.innerHTML;
             this.copyLinkBtn.innerHTML = `
                 <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -521,7 +510,6 @@ class AssetViewer {
 
     getFileIcon(extension) {
         const iconMap = {
-            // Images
             'png': '🖼️',
             'jpg': '🖼️',
             'jpeg': '🖼️',
@@ -530,16 +518,12 @@ class AssetViewer {
             'webp': '🖼️',
             'bmp': '🖼️',
             'ico': '🖼️',
-            
-            // Documents
             'pdf': '📄',
             'doc': '📝',
             'docx': '📝',
             'txt': '📄',
             'md': '📄',
             'rtf': '📄',
-            
-            // Code
             'js': '⚡',
             'ts': '⚡',
             'html': '🌐',
@@ -548,27 +532,19 @@ class AssetViewer {
             'xml': '📋',
             'yaml': '📋',
             'yml': '📋',
-            
-            // Archives
             'zip': '📦',
             'rar': '📦',
             '7z': '📦',
             'tar': '📦',
             'gz': '📦',
-            
-            // Audio
             'mp3': '🎵',
             'wav': '🎵',
             'ogg': '🎵',
             'm4a': '🎵',
-            
-            // Video
             'mp4': '🎥',
             'avi': '🎥',
             'mov': '🎥',
             'wmv': '🎥',
-            
-            // Default
             'default': '📄'
         };
         
@@ -595,12 +571,10 @@ class AssetViewer {
     }
 }
 
-// Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new AssetViewer();
 });
 
-// Initialize highlight.js for code syntax highlighting
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof hljs !== 'undefined') {
         hljs.highlightAll();
