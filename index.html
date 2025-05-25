@@ -17,7 +17,7 @@
   <meta name="twitter:description" content="Explore and manage assets for Numerimondes brands, clients, and projects." />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/numerimondes/.github/main/assets/brands/numerimondes/identity/logos/v2/logo_entier_v3.png" />
   <!-- Other Meta -->
-  <meta name="description" content="A modern asset viewer for Numerimondes, showcasing logos, banners, team photos, and more." />
+  <meta name="description" content="A modern asset viewer for Numerimondes, showcasing logos, banners, team photos, and more for brands, clients, and projects." />
   <meta name="keywords" content="Numerimondes, assets, brands, clients, projects, media" />
   <meta name="author" content="Numerimondes" />
   <!-- Favicon -->
@@ -32,8 +32,8 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/commons/scripts/WebLinksFetcher/style.css" />
-
 </head>
+ Hobbit
 <body>
   <!-- Header -->
   <header class="header">
@@ -67,10 +67,10 @@
           </div>
 
           <select id="filterType" class="filter-select">
-            <option value="all">🌐 All</option>
-            <option value="brands">🏢 Brands</option>
-            <option value="clients">👥 Clients</option>
-            <option value="projects">🚀 Projects</option>
+            <option value="all">🌐 All Assets</option>
+            <option value="brands">🏢 Brand Assets</option>
+            <option value="clients">👥 Client Assets</option>
+            <option value="projects">🚀 Project Assets</option>
           </select>
 
           <button id="helpBtn" class="help-btn tooltip" data-tooltip="View Help">
@@ -92,15 +92,15 @@
       </div>
       <div class="stat-card">
         <div class="stat-value brands" id="brandsCount">0</div>
-        <div class="stat-label">Brands</div>
+        <div class="stat-label">Brand Assets</div>
       </div>
       <div class="stat-card">
         <div class="stat-value clients" id="clientsCount">0</div>
-        <div class="stat-label">Clients</div>
+        <div class="stat-label">Client Assets</div>
       </div>
       <div class="stat-card">
         <div class="stat-value projects" id="projectsCount">0</div>
-        <div class="stat-label">Projects</div>
+        <div class="stat-label">Project Assets</div>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
       <input
         id="searchInput"
         type="text"
-        placeholder="🔍 Search for an asset or file..."
+        placeholder="🔍 Search by asset, file, or owner (client/project/brand)..."
         class="search-input"
       >
       <button id="clearSearch" class="clear-search-btn hidden">
@@ -205,7 +205,7 @@
       <div class="modal-body">
         <div class="help-content">
           <h4>🔍 Search & Filter</h4>
-          <p>Use the search bar to find specific assets by name or type. Filter by category using the dropdown.</p>
+          <p>Use the search bar to find assets by name, path, or owner (client, project, or brand name, e.g., 'le-cafe-litteraire-de-fes', 'webkenrel', 'thebestrecruit'). Filter by type (Brands, Clients, Projects) using the dropdown.</p>
           
           <h4>👁️ View Modes</h4>
           <p>Switch between grid and table views using the toggle buttons in the header.</p>
