@@ -1,55 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Numerimondes Asset Viewer</title>
+  <!-- OG Metadata -->
+  <meta property="og:title" content="Numerimondes Asset Viewer" />
+  <meta property="og:description" content="Explore and manage assets for Numerimondes brands, clients, and projects." />
+  <meta property="og:image" content="assets/brands/numerimondes/identity/logos/v2/logo_entier_v3.png" />
+  <meta property="og:url" content="https://numerimondes.github.io/.github/" />
+  <meta property="og:type" content="website" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Numerimondes Asset Viewer" />
+  <meta name="twitter:description" content="Explore and manage assets for Numerimondes brands, clients, and projects." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/numerimondes/.github/main/assets/brands/numerimondes/identity/logos/v2/logo_entier_v3.png" />
+  <!-- Other Meta -->
+  <meta name="description" content="A modern asset viewer for Numerimondes, showcasing logos, banners, team photos, and more." />
+  <meta name="keywords" content="Numerimondes, assets, brands, clients, projects, media" />
+  <meta name="author" content="Numerimondes" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/numerimondes/.github/main/assets/brands/numerimondes/identity/logos/v2/logo_entier_v3.png" />
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+  <!-- Highlight.js for Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .slide-in-right {
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-    }
-    .slide-in-right.active {
-      transform: translateX(0);
-    }
-    .backdrop-blur {
-      backdrop-filter: blur(8px);
-    }
-    .skeleton {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-    }
-    @keyframes loading {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-  </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/numerimondes/.github@main/assets/commons/scripts/WebLinksFetcher/style.css" />
+
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen">
+<body>
   <!-- Header -->
-  <header class="bg-white shadow-sm border-b sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex items-center space-x-4">
-          <h1 class="text-xl font-bold text-gray-900">
-            <img src="https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/assets/brands/numerimondes/identity/logos/v2/logo_entier_v3.png" 
-            style="width:280px;padding:10px;">
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <h1 class="logo-title">
+            <img src="https://raw.githubusercontent.com/numerimondes/.github/main/assets/brands/numerimondes/identity/logos/v2/logo_entier_v3.png"
+                 alt="Numerimondes Logo"
+                 class="logo-image" />
           </h1>
-          <span id="loadingBadge" class="hidden bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+          <span id="loadingBadge" class="loading-badge hidden">
             Loading...
           </span>
         </div>
-        <div class="flex items-center space-x-3">
-          <select id="filterType" class="border border-gray-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        <div class="header-controls">
+          <!-- View Toggle -->
+          <div class="view-toggle">
+            <button id="gridViewBtn" class="view-toggle-btn active tooltip" data-tooltip="Grid View">
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+              </svg>
+              <span class="btn-text">Grid</span>
+            </button>
+            <button id="tableViewBtn" class="view-toggle-btn tooltip" data-tooltip="Table View">
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+              </svg>
+              <span class="btn-text">Table</span>
+            </button>
+          </div>
+
+          <select id="filterType" class="filter-select">
             <option value="all">🌐 All</option>
             <option value="brands">🏢 Brands</option>
             <option value="clients">👥 Clients</option>
             <option value="projects">🚀 Projects</option>
           </select>
-          <button id="helpBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm transition-colors">
-            ❓ Help
+
+          <button id="helpBtn" class="help-btn tooltip" data-tooltip="View Help">
+            <span class="help-text">Help</span>
+            <span>❓</span>
           </button>
         </div>
       </div>
@@ -57,666 +82,146 @@
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <main class="main-content">
     <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-      <div class="bg-white rounded-lg p-4 shadow-sm border">
-        <div class="text-2xl font-bold text-blue-600" id="totalCount">0</div>
-        <div class="text-sm text-gray-600">Total Assets</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="totalCount">0</div>
+        <div class="stat-label">Total Assets</div>
       </div>
-      <div class="bg-white rounded-lg p-4 shadow-sm border">
-        <div class="text-2xl font-bold text-green-600" id="brandsCount">0</div>
-        <div class="text-sm text-gray-600">Brands</div>
+      <div class="stat-card">
+        <div class="stat-value brands" id="brandsCount">0</div>
+        <div class="stat-label">Brands</div>
       </div>
-      <div class="bg-white rounded-lg p-4 shadow-sm border">
-        <div class="text-2xl font-bold text-purple-600" id="clientsCount">0</div>
-        <div class="text-sm text-gray-600">Clients</div>
+      <div class="stat-card">
+        <div class="stat-value clients" id="clientsCount">0</div>
+        <div class="stat-label">Clients</div>
       </div>
-      <div class="bg-white rounded-lg p-4 shadow-sm border">
-        <div class="text-2xl font-bold text-orange-600" id="projectsCount">0</div>
-        <div class="text-sm text-gray-600">Projects</div>
+      <div class="stat-card">
+        <div class="stat-value projects" id="projectsCount">0</div>
+        <div class="stat-label">Projects</div>
       </div>
     </div>
 
     <!-- Search -->
-    <div class="mb-6">
-      <input 
-        id="searchInput" 
-        type="text" 
-        placeholder="🔍 Search for an asset..."
-        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    <div class="search-container">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="🔍 Search for an asset or file..."
+        class="search-input"
       >
+      <button id="clearSearch" class="clear-search-btn hidden">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
 
-    <!-- Assets Grid -->
-    <div id="assetGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <!-- Loading skeletons -->
-      <div class="skeleton bg-white rounded-lg p-6 h-80"></div>
-      <div class="skeleton bg-white rounded-lg p-6 h-80"></div>
-      <div class="skeleton bg-white rounded-lg p-6 h-80"></div>
-      <div class="skeleton bg-white rounded-lg p-6 h-80"></div>
+    <!-- Assets Grid View -->
+    <div id="gridView" class="view-transition">
+      <div id="assetGrid" class="asset-grid">
+        <!-- Loading skeletons -->
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+
+    <!-- Assets Table View -->
+    <div id="tableView" class="view-transition hidden">
+      <div class="table-container">
+        <table class="asset-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Name</th>
+              <th>Path</th>
+              <th>Size</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="assetTableBody">
+            <!-- Table rows will be populated here -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Empty State -->
-    <div id="emptyState" class="hidden text-center py-12">
-      <div class="text-6xl mb-4">📁</div>
-      <h3 class="text-lg font-medium text-gray-900 mb-2">No assets found</h3>
-      <p class="text-gray-500">Try adjusting your filters or search</p>
+    <div id="emptyState" class="empty-state hidden">
+      <div class="empty-icon">📁</div>
+      <h3 class="empty-title">No assets found</h3>
+      <p class="empty-description">Try adjusting your search or filter criteria.</p>
     </div>
   </main>
 
-  <!-- Preview Modal -->
-  <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-75 backdrop-blur flex items-center justify-center hidden z-50 p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-      <div class="flex justify-between items-center p-4 border-b">
-        <h3 id="modalTitle" class="text-lg font-semibold text-gray-900"></h3>
-        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 p-2 rounded-full hover:bg-gray-100 transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">Asset Preview</h3>
+        <button id="modalClose" class="modal-close">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
-      <div id="modalContent" class="p-6 overflow-auto max-h-[calc(90vh-80px)]">
-        <!-- Dynamic content -->
+      <div id="modalBody" class="modal-body">
+        <!-- Modal content will be loaded here -->
+      </div>
+      <div class="modal-footer">
+        <button id="downloadBtn" class="download-btn">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+          </svg>
+          Download
+        </button>
+        <button id="copyLinkBtn" class="copy-link-btn">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+          </svg>
+          Copy Link
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Help Sidebar -->
-  <div id="helpSidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-xl border-l slide-in-right z-50 overflow-y-auto">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-gray-900">📋 Asset Naming Convention</h2>
-        <button id="closeHelp" class="text-gray-400 hover:text-gray-600 p-2 rounded-full hover:bg-gray-100">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <!-- Help Modal -->
+  <div id="helpModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Help & Documentation</h3>
+        <button id="helpModalClose" class="modal-close">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
-      
-      <div class="space-y-6">
-        <div>
-          <h3 class="font-semibold text-gray-900 mb-3">🏗️ Folder Structure</h3>
-          <div class="bg-gray-50 p-3 rounded-lg text-sm font-mono">
-            <div>assets/</div>
-            <div>├── brands/</div>
-            <div>├── clients/</div>
-            <div>├── projects/</div>
-            <div>└── commons/</div>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="font-semibold text-gray-900 mb-3">🎯 Automatically Detected Assets</h3>
-          <div class="space-y-3">
-            <div class="bg-blue-50 p-3 rounded-lg">
-              <div class="font-medium text-blue-900">Main Logo</div>
-              <div class="text-sm text-blue-700">identity/logos/v*/[name]*.{png,jpg,svg}</div>
-            </div>
-            <div class="bg-green-50 p-3 rounded-lg">
-              <div class="font-medium text-green-900">Web Banner</div>
-              <div class="text-sm text-green-700">marketing/banners/web/*.{png,jpg}</div>
-            </div>
-            <div class="bg-purple-50 p-3 rounded-lg">
-              <div class="font-medium text-purple-900">Team Photo</div>
-              <div class="text-sm text-purple-700">team/photos/optimized/*.{jpg,png}</div>
-            </div>
-            <div class="bg-orange-50 p-3 rounded-lg">
-              <div class="font-medium text-orange-900">OG Image</div>
-              <div class="text-sm text-orange-700">identity/preview/og-image/*.{png,jpg}</div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="font-semibold text-gray-900 mb-3">🔍 Features</h3>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li>• Automatic exploration via assets-links.txt</li>
-            <li>• Filtering by type (brands, clients, projects)</li>
-            <li>• Real-time search</li>
-            <li>• Modal preview with view/download options</li>
-            <li>• Responsive design</li>
-            <li>• Source file handling with are_downloadable check</li>
-          </ul>
+      <div class="modal-body">
+        <div class="help-content">
+          <h4>🔍 Search & Filter</h4>
+          <p>Use the search bar to find specific assets by name or type. Filter by category using the dropdown.</p>
+          
+          <h4>👁️ View Modes</h4>
+          <p>Switch between grid and table views using the toggle buttons in the header.</p>
+          
+          <h4>📄 Asset Preview</h4>
+          <p>Click on any asset to preview it in a modal. Images, documents, and code files are supported.</p>
+          
+          <h4>💾 Download Assets</h4>
+          <p>Download any asset directly using the download button in the preview modal.</p>
+          
+          <h4>🔗 Share Links</h4>
+          <p>Copy direct links to assets using the "Copy Link" button.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Help Backdrop -->
-  <div id="helpBackdrop" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur hidden z-40"></div>
-
-  <script>
-    // Configuration
-    const CONFIG = {
-      BASE_RAW_URL: 'https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main',
-      ASSETS_LINKS_URL: 'https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/assets/commons/config/assets-links.txt',
-      MAX_DEPTH: 4,
-      ASSET_PATTERNS: {
-        logo: ['identity/logos/v1', 'identity/logos/v2'],
-        banner: ['marketing/banners/web'],
-        teamPhoto: ['team/photos/optimized'],
-        ogImage: ['identity/preview/og-image', 'identity/preview/og-image/v1']
-      },
-      SUPPORTED_EXTENSIONS: {
-        image: ['.png', '.jpg', '.jpeg', '.svg', '.webp'],
-        document: ['.pdf', '.doc', '.docx', '.md', '.txt'],
-        video: ['.mp4', '.webm', '.mov'],
-        audio: ['.mp3', '.wav', '.ogg'],
-        script: ['.sh']
-      }
-    };
-
-    // Application state
-    let allAssets = [];
-    let filteredAssets = [];
-    
-    // DOM elements
-    const elements = {
-      grid: document.getElementById('assetGrid'),
-      filterType: document.getElementById('filterType'),
-      searchInput: document.getElementById('searchInput'),
-      loadingBadge: document.getElementById('loadingBadge'),
-      totalCount: document.getElementById('totalCount'),
-      brandsCount: document.getElementById('brandsCount'),
-      clientsCount: document.getElementById('clientsCount'),
-      projectsCount: document.getElementById('projectsCount'),
-      emptyState: document.getElementById('emptyState'),
-      helpBtn: document.getElementById('helpBtn'),
-      helpSidebar: document.getElementById('helpSidebar'),
-      helpBackdrop: document.getElementById('helpBackdrop'),
-      closeHelp: document.getElementById('closeHelp')
-    };
-
-    // Function to get file type
-    function getFileType(filename) {
-      const ext = filename.toLowerCase().substring(filename.lastIndexOf('.') || filename.length);
-      for (const [type, extensions] of Object.entries(CONFIG.SUPPORTED_EXTENSIONS)) {
-        if (extensions.includes(ext)) return type;
-      }
-      return 'other';
-    }
-
-    // Function to fetch and parse assets-links.txt
-    async function fetchAssetsLinks() {
-      try {
-        const response = await fetch(CONFIG.ASSETS_LINKS_URL);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const text = await response.text();
-        return text.split('\n').filter(line => line.trim()).map(url => ({
-          url,
-          path: url.replace(CONFIG.BASE_RAW_URL + '/', ''),
-          name: url.split('/').pop(),
-          isSource: url.includes('/sources/'),
-          parentDir: url.substring(0, url.lastIndexOf('/'))
-        }));
-      } catch (error) {
-        console.error('Error fetching assets-links.txt:', error);
-        throw error;
-      }
-    }
-
-    // Function to check if a source file is downloadable
-    function isSourceDownloadable(file, allFiles) {
-      if (!file.isSource) return true;
-      return allFiles.some(f => f.parentDir === file.parentDir && f.name === 'are_downloadable');
-    }
-
-    // Function to explore files for an entity
-    function exploreFilesForEntity(entityPath, entityName, entityType, allFiles) {
-      const files = allFiles
-        .filter(f => f.path.startsWith(entityPath) && !f.name.includes('.gitkeep') && f.name !== 'README.md')
-        .map(f => ({
-          name: f.name,
-          path: f.path,
-          downloadUrl: f.url,
-          type: getFileType(f.name),
-          isSource: f.isSource,
-          isDownloadable: isSourceDownloadable(f, allFiles)
-        }));
-      return files;
-    }
-
-    // Function to detect assets
-    function detectAssets(files, entityPath, entityName, entityType) {
-      const assets = {
-        name: entityName,
-        type: entityType,
-        path: entityPath,
-        logo: null,
-        banner: null,
-        teamPhoto: null,
-        ogImage: null,
-        allFiles: files
-      };
-
-      for (const pattern of CONFIG.ASSET_PATTERNS.logo) {
-        const logoFiles = files.filter(f => 
-          f.path.includes(`${entityPath}/${pattern}`) && 
-          f.type === 'image' &&
-          !f.isSource
-        );
-        if (logoFiles.length > 0) {
-          assets.logo = logoFiles.find(f => 
-            f.name.toLowerCase().includes(entityName.toLowerCase()) || 
-            f.name.includes('logo')
-          ) || logoFiles[0];
-          break;
-        }
-      }
-
-      for (const pattern of CONFIG.ASSET_PATTERNS.banner) {
-        const bannerFiles = files.filter(f => 
-          f.path.includes(`${entityPath}/${pattern}`) && 
-          f.type === 'image'
-        );
-        if (bannerFiles.length > 0) {
-          assets.banner = bannerFiles[0];
-          break;
-        }
-      }
-
-      for (const pattern of CONFIG.ASSET_PATTERNS.teamPhoto) {
-        const teamFiles = files.filter(f => 
-          f.path.includes(`${entityPath}/${pattern}`) && 
-          f.type === 'image'
-        );
-        if (teamFiles.length > 0) {
-          assets.teamPhoto = teamFiles[0];
-          break;
-        }
-      }
-
-      for (const pattern of CONFIG.ASSET_PATTERNS.ogImage) {
-        const ogFiles = files.filter(f => 
-          f.path.includes(`${entityPath}/${pattern}`) && 
-          f.type === 'image' &&
-          !f.isSource
-        );
-        if (ogFiles.length > 0) {
-          assets.ogImage = ogFiles[0];
-          break;
-        }
-      }
-
-      return assets;
-    }
-
-    // Main function to load all assets
-    async function loadAllAssets() {
-      console.log('Starting asset loading');
-      showLoading(true);
-      allAssets = [];
-
-      try {
-        const allFiles = await fetchAssetsLinks();
-        console.log(`Fetched ${allFiles.length} files from assets-links.txt`);
-
-        const entityTypes = [
-          { type: 'brands', prefix: 'assets/brands/' },
-          { type: 'clients', prefix: 'assets/clients/' },
-          { type: 'projects', prefix: 'assets/projects/' }
-        ];
-
-        for (const { type, prefix } of entityTypes) {
-          console.log(`Processing ${type}`);
-          const entities = [...new Set(
-            allFiles
-              .filter(f => f.path.startsWith(prefix))
-              .map(f => {
-                const parts = f.path.split('/');
-                if (type === 'clients') {
-                  // Clients have deeper nesting: assets/clients/morocco/asso|ste/entity
-                  return parts.slice(0, 5).join('/');
-                }
-                return parts.slice(0, 3).join('/');
-              })
-          )];
-
-          console.log(`Found ${entities.length} entities for ${type}`);
-
-          for (const entityPath of entities) {
-            const entityName = entityPath.split('/').pop();
-            let files;
-
-            if (type === 'clients') {
-              // For clients, process the deepest level (e.g., le-cafe-litteraire-de-fes)
-              files = exploreFilesForEntity(entityPath, entityName, type, allFiles);
-            } else {
-              files = exploreFilesForEntity(entityPath, entityName, type, allFiles);
-            }
-
-            console.log(`Detected ${files.length} files for ${entityPath}`);
-            const asset = detectAssets(files, entityPath, entityName, type);
-            allAssets.push(asset);
-            console.log(`Added asset: ${type}/${entityName}`);
-          }
-        }
-
-        console.log(`Total assets loaded: ${allAssets.length}`);
-        updateStats();
-        filterAndRenderAssets();
-      } catch (error) {
-        console.error('Error loading assets:', error);
-        showError(`Unable to load assets: ${error.message}`);
-      } finally {
-        showLoading(false);
-      }
-    }
-
-    // Function to show/hide loading state
-    function showLoading(show) {
-      console.log(`Setting loading state: ${show}`);
-      elements.loadingBadge.classList.toggle('hidden', !show);
-      if (!show) {
-        elements.grid.querySelectorAll('.skeleton').forEach(s => s.remove());
-        console.log('Removed loading skeletons');
-      }
-    }
-
-    // Function to update statistics
-    function updateStats() {
-      console.log('Updating statistics');
-      const counts = {
-        total: allAssets.length,
-        brands: allAssets.filter(a => a.type === 'brands').length,
-        clients: allAssets.filter(a => a.type === 'clients').length,
-        projects: allAssets.filter(a => a.type === 'projects').length
-      };
-
-      elements.totalCount.textContent = counts.total;
-      elements.brandsCount.textContent = counts.brands;
-      elements.clientsCount.textContent = counts.clients;
-      elements.projectsCount.textContent = counts.projects;
-      console.log('Statistics updated:', counts);
-    }
-
-    // Function to filter assets and render
-    function filterAndRenderAssets() {
-      console.log('Filtering and rendering assets');
-      const filterType = elements.filterType.value;
-      const searchTerm = elements.searchInput.value.toLowerCase();
-      console.log(`Filter type: ${filterType}, Search term: ${searchTerm}`);
-
-      filteredAssets = allAssets.filter(asset => {
-        const matchesType = filterType === 'all' || asset.type === filterType;
-        const matchesSearch = asset.name.toLowerCase().includes(searchTerm);
-        return matchesType && matchesSearch;
-      });
-      console.log(`Filtered ${filteredAssets.length} assets`);
-
-      renderAssets();
-    }
-
-    // Function to render assets
-    function renderAssets() {
-      console.log('Rendering assets');
-      elements.grid.innerHTML = '';
-      elements.emptyState.classList.add('hidden');
-
-      if (filteredAssets.length === 0) {
-        console.log('No assets to display');
-        elements.emptyState.classList.remove('hidden');
-        return;
-      }
-
-      filteredAssets.forEach(asset => {
-        const card = createAssetCard(asset);
-        elements.grid.appendChild(card);
-        console.log(`Rendered card for ${asset.name}`);
-      });
-    }
-
-    // Function to create an asset card
-    function createAssetCard(asset) {
-      console.log(`Creating card for ${asset.name} (${asset.type})`);
-      const card = document.createElement('div');
-      card.className = 'bg-white rounded-lg shadow-sm border hover:shadow-md transition-all duration-200 p-6 group';
-
-      const typeEmojis = {
-        brands: '🏢',
-        clients: '👥',
-        projects: '🚀'
-      };
-
-      const hasAssets = asset.logo || asset.banner || asset.teamPhoto || asset.ogImage;
-
-      card.innerHTML = `
-        <div class="text-center space-y-4">
-          <div class="flex justify-between items-start mb-3">
-            <span class="text-xs px-2 py-1 rounded-full ${getTypeColor(asset.type)} font-medium">
-              ${typeEmojis[asset.type]} ${asset.type}
-            </span>
-            <button onclick="showAllAssets('${asset.name}', '${asset.type}')" 
-                    class="text-gray-400 hover:text-gray-600 text-sm opacity-100">
-              📁 ${asset.allFiles.length}
-            </button>
-          </div>
-
-          ${asset.logo ? `
-            <div class="w-24 h-24 mx-auto mb-4 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden border">
-              <img src="${asset.logo.downloadUrl}" 
-                   alt="Logo ${asset.name}" 
-                   class="max-w-full max-h-full object-contain cursor-pointer hover:scale-105 transition-transform"
-                   onclick="showPreview('${asset.logo.downloadUrl}', 'Logo - ${asset.name}', '${asset.logo.type}')">
-            </div>
-          ` : '<div class="w-24 h-24 mx-auto mb-4 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">📄</div>'}
-
-          <h3 class="font-semibold text-gray-900 text-lg capitalize">${asset.name.replace(/-/g, ' ')}</h3>
-          
-          <div class="space-y-2">
-            ${asset.banner ? `
-              <button onclick="showPreview('${asset.banner.downloadUrl}', 'Banner - ${asset.name}', '${asset.banner.type}')" 
-                      class="block w-full text-blue-600 hover:text-blue-800 text-sm hover:bg-blue-50 py-1 px-2 rounded transition-colors">
-                🎯 View Banner
-              </button>
-            ` : ''}
-            
-            ${asset.teamPhoto ? `
-              <button onclick="showPreview('${asset.teamPhoto.downloadUrl}', 'Team - ${asset.name}', '${asset.teamPhoto.type}')" 
-                      class="block w-full text-green-600 hover:text-green-800 text-sm hover:bg-green-50 py-1 px-2 rounded transition-colors">
-                👥 View Team
-              </button>
-            ` : ''}
-            
-            ${asset.ogImage ? `
-              <button onclick="showPreview('${asset.ogImage.downloadUrl}', 'OG Image - ${asset.name}', '${asset.ogImage.type}')" 
-                      class="block w-full text-purple-600 hover:text-purple-800 text-sm hover:bg-purple-50 py-1 px-2 rounded transition-colors">
-                🖼️ View OG Image
-              </button>
-            ` : ''}
-          </div>
-
-          ${!hasAssets ? '<p class="text-gray-500 text-sm mt-4">No main assets detected</p>' : ''}
-        </div>
-      `;
-      
-      console.log(`Card created for ${asset.name}`);
-      return card;
-    }
-
-    // Function to get type color
-    function getTypeColor(type) {
-      const colors = {
-        brands: 'bg-blue-100 text-blue-800',
-        clients: 'bg-green-100 text-green-800',
-        projects: 'bg-purple-100 text-purple-800'
-      };
-      const color = colors[type] || 'bg-gray-100 text-gray-800';
-      console.log(`Color for ${type}: ${color}`);
-      return color;
-    }
-
-    // Function to show preview
-    function showPreview(url, title, fileType) {
-      console.log(`Showing preview for ${title} (type: ${fileType})`);
-      const modal = document.getElementById('previewModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalContent = document.getElementById('modalContent');
-
-      modalTitle.textContent = title;
-
-      if (fileType === 'image') {
-        modalContent.innerHTML = `
-          <div class="text-center">
-            <img src="${url}" alt="${title}" class="max-w-full max-h-[60vh] mx-auto rounded-lg shadow-lg" />
-            <div class="mt-4 p-4 bg-gray-50 rounded-lg">
-              <p class="text-sm text-gray-600 mb-2">Image URL:</p>
-              <input type="text" value="${url}" readonly 
-                     class="w-full px-3 py-2 bg-white border rounded text-sm font-mono" 
-                     onclick="this.select()">
-            </div>
-          </div>
-        `;
-      } else {
-        modalContent.innerHTML = `
-          <div class="text-center">
-            <div class="text-6xl mb-4">📄</div>
-            <p class="text-gray-600 mb-4">Preview not available for this file type</p>
-            <a href="${url}" target="_blank" 
-               class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-              🔗 Open File
-            </a>
-          </div>
-        `;
-      }
-
-      modal.classList.remove('hidden');
-      console.log('Preview modal opened');
-    }
-
-    // Function to show all assets for an entity
-    function showAllAssets(entityName, entityType) {
-      console.log(`Showing all assets for ${entityName} (${entityType})`);
-      const asset = allAssets.find(a => a.name === entityName && a.type === entityType);
-      if (!asset) {
-        console.error(`No asset found for ${entityName} (${entityType})`);
-        return;
-      }
-
-      const modal = document.getElementById('previewModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalContent = document.getElementById('modalContent');
-
-      modalTitle.textContent = `📁 All Files - ${entityName}`;
-
-      const filesByType = {
-        image: asset.allFiles.filter(f => f.type === 'image'),
-        document: asset.allFiles.filter(f => f.type === 'document'),
-        video: asset.allFiles.filter(f => f.type === 'video'),
-        audio: asset.allFiles.filter(f => f.type === 'audio'),
-        script: asset.allFiles.filter(f => f.type === 'script'),
-        other: asset.allFiles.filter(f => f.type === 'other')
-      };
-
-      let content = '<div class="space-y-6">';
-      
-      Object.entries(filesByType).forEach(([type, files]) => {
-        if (files.length > 0) {
-          const typeEmojis = {
-            image: '🖼️',
-            document: '📄',
-            video: '🎬',
-            audio: '🎵',
-            script: '📜',
-            other: '📁'
-          };
-          console.log(`Rendering ${files.length} ${type} files`);
-          content += `
-            <div>
-              <h3 class="font-semibold text-gray-900 mb-3 flex items-center">
-                ${typeEmojis[type]} ${type.charAt(0).toUpperCase() + type.slice(1)} (${files.length})
-              </h3>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          `;
-          
-          files.forEach(file => {
-            const fileName = file.name;
-            const filePath = file.path.replace(asset.path + '/', '');
-            const isSourceLabel = file.isSource ? '<span class="text-xs text-orange-600 ml-2">[Source]</span>' : '';
-            const downloadButton = file.isDownloadable ? `
-              <a href="${file.downloadUrl}" download 
-                 class="ml-2 text-green-600 hover:text-green-800 text-sm">
-                ⬇️
-              </a>
-            ` : '';
-
-            content += `
-              <div class="border rounded-lg p-3 hover:bg-gray-50 transition-colors">
-                <div class="flex items-center justify-between">
-                  <div class="flex-1 min-w-0">
-                    <p class="font-medium text-sm text-gray-900 truncate">${fileName}${isSourceLabel}</p>
-                    <p class="text-xs text-gray-500 truncate">${filePath}</p>
-                  </div>
-                  <div class="flex items-center">
-                    <a href="${file.downloadUrl}" target="_blank" 
-                       class="ml-2 text-blue-600 hover:text-blue-800 text-sm">
-                      👁️
-                    </a>
-                    ${downloadButton}
-                  </div>
-                </div>
-              </div>
-            `;
-          });
-          
-          content += '</div></div>';
-        }
-      });
-      
-      content += '</div>';
-      modalContent.innerHTML = content;
-      modal.classList.remove('hidden');
-      console.log('All assets modal opened');
-    }
-
-    // Function to close modal
-    function closeModal() {
-      console.log('Closing modal');
-      document.getElementById('previewModal').classList.add('hidden');
-    }
-
-    // Function to show error
-    function showError(message) {
-      console.error('Displaying error:', message);
-      elements.grid.innerHTML = `
-        <div class="col-span-full text-center py-12">
-          <div class="text-6xl mb-4">⚠️</div>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">Error</h3>
-          <p class="text-gray-500">${message}</p>
-        </div>
-      `;
-    }
-
-    // Help sidebar handlers
-    elements.helpBtn.addEventListener('click', () => {
-      console.log('Opening help sidebar');
-      elements.helpSidebar.classList.add('active');
-      elements.helpBackdrop.classList.remove('hidden');
-    });
-
-    elements.closeHelp.addEventListener('click', closeHelp);
-    elements.helpBackdrop.addEventListener('click', closeHelp);
-
-    function closeHelp() {
-      console.log('Closing help sidebar');
-      elements.helpSidebar.classList.remove('active');
-      elements.helpBackdrop.classList.add('hidden');
-    }
-
-    // Event listeners for filtering and search
-    elements.filterType.addEventListener('change', () => {
-      console.log('Filter type changed');
-      filterAndRenderAssets();
-    });
-    elements.searchInput.addEventListener('input', () => {
-      console.log('Search input changed');
-      filterAndRenderAssets();
-    });
-
-    // Initialize
-    console.log('Initializing asset viewer');
-    loadAllAssets();
-  </script>
+<link rel="stylesheet" href="assets/commons/scripts/WebLinksFetcher/style.css" />
 </body>
 </html>
