@@ -118,7 +118,20 @@
   --hover-bg: #262c36;             /* Hover background */
   --active-bg: #316dca;            /* Active background */
   --focus-ring: #1f6feb;           /* Focus ring color */
+
+/* Source Code Modal Specific Styles */
+
+--page-sourcecode-modal-width: 95vw;
+  --page-sourcecode-modal-height: 95vh;
 }
+
+.page-sourcecode-modal .modal-content {
+  width: var(--page-sourcecode-modal-width);
+  max-width: var(--page-sourcecode-modal-width);
+  height: var(--page-sourcecode-modal-height);
+  max-height: var(--page-sourcecode-modal-height);
+}
+
 
 /* Base Styles */
 * {
@@ -1446,6 +1459,7 @@ body {
   font-size: 0.8rem;
   font-family: 'Courier New', monospace;
 }
+
   </style>
 </head>
 
@@ -1496,9 +1510,7 @@ body {
 
           <!-- Help Button -->
           <button class="help-btn" onclick="showHelp()">
-            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM2.75 12C2.75 9.71567 3.57804 7.62475 4.95034 6.011L8.1528 9.21346C7.58488 9.99619 7.25 10.959 7.25 12C7.25 13.041 7.58488 14.0038 8.1528 14.7865L4.95033 17.989C3.57804 16.3753 2.75 14.2843 2.75 12ZM9.21346 8.1528L6.011 4.95034C7.62475 3.57804 9.71567 2.75 12 2.75C14.2843 2.75 16.3753 3.57804 17.989 4.95034L14.7865 8.1528C14.0038 7.58488 13.041 7.25 12 7.25C10.959 7.25 9.99619 7.58488 9.21346 8.1528ZM6.01099 19.0497C7.62474 20.422 9.71567 21.25 12 21.25C14.2843 21.25 16.3753 20.422 17.989 19.0497L14.7865 15.8472C14.0038 16.4151 13.041 16.75 12 16.75C10.959 16.75 9.99619 16.4151 9.21346 15.8472L6.01099 19.0497ZM15.8472 14.7865L19.0497 17.989C20.422 16.3753 21.25 14.2843 21.25 12C21.25 9.71567 20.422 7.62475 19.0497 6.011L15.8472 9.21346C16.4151 9.99619 16.75 10.959 16.75 12C16.75 13.041 16.4151 14.0038 15.8472 14.7865ZM8.75 12C8.75 10.2051 10.2051 8.75 12 8.75C13.7949 8.75 15.25 10.2051 15.25 12C15.25 13.7949 13.7949 15.25 12 15.25C10.2051 15.25 8.75 13.7949 8.75 12Z" fill="#1C274C"></path> </g></svg>
             <span class="help-text">Help</span>
           </button>
         </div>
@@ -1602,7 +1614,7 @@ body {
       <a href="https://github.com/orgs/numerimondes/discussions" class="footer-link" target="_blank">Discussions</a>
       <a href="https://github.com/numerimondes" class="footer-link" target="_blank">GitHub</a>
       <a href="https://numerimondes.com" class="footer-link" target="_blank">Website</a>
-      <a href="https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/index.html" target="_blank" class="footer-link">See the Source code</a>
+      <a href="#" onclick="openSourceCodeModal()" class="footer-link">See the Source code</a>
       <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" class="footer-link">Licence GNU GPL V3</a>
       </div>
     <p class="footer-copyright">
@@ -2815,6 +2827,118 @@ body {
 
       modal.classList.add('show');
     }
+  </script>
+  <script>
+    async function openSourceCodeModal() {
+  const modal = document.getElementById('asset-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalPreview = document.getElementById('modal-preview');
+  const modalActions = document.getElementById('modal-actions');
+  const modalInfo = document.getElementById('modal-info');
+
+  modalTitle.textContent = 'Source Code: index.html';
+
+  // Add page-sourcecode-modal class for specific styling
+  modal.classList.add('page-sourcecode-modal');
+
+  // Show loading state
+  modalPreview.innerHTML = `
+    <div class="asset-placeholder text-6xl">📄</div>
+  `;
+  modalActions.innerHTML = '';
+  modalInfo.innerHTML = '';
+
+  try {
+    // Fetch the source code
+    const response = await fetch('https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/index.html');
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    const sourceCode = await response.text();
+
+    // Calculate number of lines
+    const lineCount = sourceCode.split('\n').length;
+
+    // Calculate character count excluding HTML comments
+    const noComments = sourceCode.replace(/<!--[\s\S]*?-->/g, '');
+    const charCount = noComments.length;
+
+    // Display source code in modal
+    modalPreview.innerHTML = `
+      <div class="markdown-content">
+        <pre><code class="language-html">${escapeHtml(sourceCode)}</code></pre>
+      </div>
+    `;
+
+    // Add action buttons
+    modalActions.innerHTML = `
+      <button class="modal-action-btn" onclick="copySourceCode()">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+        </svg>
+        Copy
+      </button>
+      <a href="https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/index.html" target="_blank" class="modal-action-btn secondary">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        Raw File
+      </a>
+    `;
+
+    // Set modal info with line count and character count
+    modalInfo.innerHTML = `
+      <div class="modal-info-item">
+        <div class="modal-info-label">Filename:</div>
+        <div class="modal-info-value">index.html</div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">Path:</div>
+        <div class="modal-info-value">.github/index.html</div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">URL:</div>
+        <div class="modal-info-value">https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/index.html</div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">Lines:</div>
+        <div class="modal-info-value">${lineCount}</div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">Characters:</div>
+        <div class="modal-info-value">${charCount} (excluding comments)</div>
+      </div>
+    `;
+
+    // Initialize syntax highlighting
+    hljs.highlightAll();
+
+    modal.classList.add('show');
+  } catch (error) {
+    console.error('Error fetching source code:', error);
+    modalPreview.innerHTML = `
+      <div class="asset-placeholder text-6xl">⚠️</div>
+      <p class="text-red-500">Failed to load source code: ${error.message}</p>
+    `;
+  }
+}
+
+function copySourceCode() {
+  const codeElement = document.querySelector('#modal-preview .markdown-content pre code');
+  if (codeElement) {
+    const sourceCode = codeElement.textContent;
+    navigator.clipboard.writeText(sourceCode).then(() => {
+      console.log('Source code copied to clipboard');
+    }).catch(err => {
+      console.error('Failed to copy source code:', err);
+    });
+  }
+}
+
+function closeModal() {
+  const modal = document.getElementById('asset-modal');
+  modal.classList.remove('show', 'page-sourcecode-modal');
+}
   </script>
 </body>
 </html>
