@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Numerimondes - Maintenance Globale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/assets/brands/numerimondes/identity/logos/v2/faviconV2_Numerimondes.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Meta Infos -->
+  <meta name="description" content="Maintenance globale en cours chez Numerimondes. Nous modernisons notre infrastructure pour vous offrir des services plus rapides, unifiés et puissants.">
+  <meta name="keywords" content="Numerimondes, Maintenance, Infrastructure, Upgrade, Systèmes, API, Plateforme">
+  <meta name="author" content="Numerimondes">
+  <meta name="generator" content="Numerimondes">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="google" content="notranslate">
+
+  <!-- Theme & App Settings -->
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Numerimondes">
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:title" content="Numerimondes - Maintenance Globale">
+  <meta property="og:description" content="Modernisation en cours. Nos services reviennent bientôt, plus puissants et unifiés.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/assets/brands/numerimondes/marketing/banners/web/og-image-jul-25.png">
+  <meta property="og:url" content="https://numerimondes.com">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Numerimondes">
+
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="1234567890">
+
+    <style>
+        * {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .search-pulse {
+            animation: pulse-search 3s infinite;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+        }
+
+        @keyframes pulse-search {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .bento-card {
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .pulse-border {
+            animation: pulse-border 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(251, 146, 60, 0.4); box-shadow: 0 0 20px rgba(251, 146, 60, 0.2); }
+            50% { border-color: rgba(251, 146, 60, 0.8); box-shadow: 0 0 30px rgba(251, 146, 60, 0.4); }
+        }
+
+        .maintenance-icon {
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .water-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .water-wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+            animation: wave 15s ease-in-out infinite;
+        }
+
+        .water-wave:nth-child(1) {
+            animation-delay: 0s;
+            opacity: 0.6;
+        }
+
+        .water-wave:nth-child(2) {
+            animation-delay: -5s;
+            opacity: 0.4;
+        }
+
+        .water-wave:nth-child(3) {
+            animation-delay: -10s;
+            opacity: 0.3;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            33% {
+                transform: translate(-30%, -60%) scale(1.1);
+            }
+            66% {
+                transform: translate(-70%, -40%) scale(0.9);
+            }
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+            animation: ripple 12s ease-out infinite;
+        }
+
+        .ripple:nth-child(4) {
+            width: 300px;
+            height: 300px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .ripple:nth-child(5) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 20%;
+            animation-delay: -4s;
+        }
+
+        .ripple:nth-child(6) {
+            width: 150px;
+            height: 150px;
+            top: 80%;
+            left: 60%;
+            animation-delay: -8s;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-900 overflow-x-hidden">
+    <!-- Status Banner en tout premier -->
+    <div class="bg-red-600 text-white py-3 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-3 text-center sm:text-left">
+                <span class="font-medium text-sm sm:text-base" id="status-text"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background avec effet eau et overlay (après le banner) -->
+    <div class="fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat" style="background-image: url('https://www.dic-global.com/images/product_file/file/coating_main.jpg'); z-index: -3;"></div>
+    <div class="water-effect fixed top-0 left-0 w-full h-full" style="z-index: -2;">
+        <div class="water-wave"></div>
+        <div class="water-wave"></div>
+        <div class="water-wave"></div>
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+    </div>
+    <div class="fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-xl" style="z-index: -1;"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 min-h-screen p-6 max-w-7xl mx-auto" style="padding-top: 2rem;">
+        <!-- Header -->
+        <header class="flex items-center justify-between mb-8 fade-in">
+            <div class="flex items-center space-x-4">
+                <img src="https://raw.githubusercontent.com/numerimondes/.github/refs/heads/main/assets/brands/numerimondes/identity/logos/v2/faviconV2_Numerimondes.png" alt="Logo" class="w-12 h-12 rounded-xl shadow-lg">
+                <h1 class="text-2xl font-bold text-white">Numerimondes</h1>
+            </div>
+
+            <button onclick="toggleLanguage()" class="flex items-center space-x-3 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-300 border border-white/20 hover:border-white/30">
+                <img id="flag" class="w-6 h-6 rounded-full" alt="Flag">
+                <span id="lang-code" class="font-medium text-white"></span>
+            </button>
+        </header>
+
+        <!-- Main Bento Grid optimisé pour l'espace écran -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-in">
+            <!-- Main Message Card -->
+            <div class="lg:col-span-2 bento-card bg-white/10 rounded-2xl p-8">
+                <div class="text-left">
+                    <h2 class="text-4xl font-bold text-white mb-6" id="main-title"></h2>
+                    <p class="text-lg text-gray-200 leading-relaxed mb-6 text-justify" id="main-description"></p>
+                    <div>
+                        <blockquote class="text-blue-300 italic text-lg font-medium border-l-4 border-blue-400 pl-4" id="quote"></blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Releases -->
+            <div class="bento-card bg-green-500/10 search-pulse rounded-2xl p-6">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center mr-4">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white" id="upcoming-title"></h3>
+                </div>
+                <ul class="space-y-3 text-gray-200" id="upcoming-list"></ul>
+            </div>
+
+            <!-- Current Work Card -->
+            <div class="bento-card bg-blue-500/10 rounded-2xl p-6">
+                <div class="flex items-center mb-6">
+                    <div class="w-4 h-4 bg-blue-400 rounded-full animate-pulse mr-4"></div>
+                    <h3 class="text-xl font-semibold text-white" id="current-title"></h3>
+                </div>
+                <ul class="space-y-3 text-gray-200" id="current-list"></ul>
+            </div>
+
+            <!-- Vision Statement -->
+            <div class="lg:col-span-2 bento-card bg-purple-500/10 rounded-2xl p-8">
+                <div class="flex items-start space-x-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-4" id="vision-title"></h3>
+                        <p class="text-gray-200 text-lg leading-relaxed" id="vision-description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center fade-in">
+            <p class="text-gray-400" id="footer-text"></p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            statusText: {
+                fr: 'Développement et intégration système en cours - Mise à niveau globale des infrastructures',
+                en: 'System development and integration in progress - Global infrastructure upgrade'
+            },
+            mainTitle: {
+                fr: 'Innovation en cours de déploiement',
+                en: 'Innovation being deployed'
+            },
+            mainDescription: {
+                fr: 'Nous implémentons une nouvelle génération d\'infrastructures technologiques pour offrir des performances exceptionnelles et des services unifiés de pointe. Cette transformation inclut nos plateformes clients, portails partenaires, API avancées et écosystème de développement.',
+                en: 'We\'re implementing next-generation technological infrastructure to deliver exceptional performance and cutting-edge unified services. This transformation includes our client platforms, partner portals, advanced APIs, and development ecosystem.'
+            },
+            currentTitle: {
+                fr: 'Développement actuel',
+                en: 'Current Development'
+            },
+            currentList: {
+                fr: ['Intégration système unifiée', 'Nouveau noyau : Webkernel OS', 'Stack serveur : Mir>Server', 'Révision UI/UX complète'],
+                en: ['Unified System Integration', 'New Kernel: Webkernel OS', 'Server Stack: Mir>Server', 'UI/UX Overhaul']
+            },
+            upcomingTitle: {
+                fr: 'Prochains déploiements',
+                en: 'Upcoming Deployments'
+            },
+            upcomingList: {
+                fr: ['The Best Recruit (Editions de base)', 'Ream Auditeurs', 'Tableaux de bord clients & partenaires', 'Console de gestion unifiée', 'Portail API & développeurs'],
+                en: ['The Best Recruit (Core Edition)', 'Ream Auditors', 'Client & Partner Dashboards', 'Unified Management Console', 'API & Developer Portal']
+            },
+            visionTitle: {
+                fr: 'Notre vision',
+                en: 'Our Vision'
+            },
+            visionDescription: {
+                fr: 'Nous redéfinissons la gestion des écosystèmes numériques d\'entreprise. Une expérience révolutionnaire, plus rapide, plus intelligente et parfaitement intégrée vous attend.',
+                en: 'We\'re redefining enterprise digital ecosystem management. A revolutionary experience awaits - faster, smarter, and perfectly integrated.'
+            },
+            quote: {
+                fr: 'L\'innovation naît dans les coulisses.',
+                en: 'Innovation is born behind the scenes.'
+            }
+        };
+
+        const flags = {
+            fr: 'https://flagcdn.com/fr.svg',
+            en: 'https://flagcdn.com/gb.svg'
+        };
+
+        const langCodes = {
+            fr: 'FR',
+            en: 'EN'
+        };
+
+        let currentLang = localStorage.getItem('language') || 'fr';
+
+        function lang(key) {
+            return translations[key] && translations[key][currentLang] ? translations[key][currentLang] : key;
+        }
+
+        function updateContent() {
+            // Textes simples
+            document.getElementById('status-text').textContent = lang('statusText');
+            document.getElementById('main-title').textContent = lang('mainTitle');
+            document.getElementById('main-description').textContent = lang('mainDescription');
+            document.getElementById('current-title').textContent = lang('currentTitle');
+            document.getElementById('upcoming-title').textContent = lang('upcomingTitle');
+            document.getElementById('vision-title').textContent = lang('visionTitle');
+            document.getElementById('vision-description').textContent = lang('visionDescription');
+            document.getElementById('quote').textContent = lang('quote');
+            
+            // Footer avec année courante
+            const currentYear = new Date().getFullYear();
+            document.getElementById('footer-text').textContent = `© ${currentYear} Numerimondes - Innovation & développement technologique`;
+            
+            // Listes
+            const currentList = document.getElementById('current-list');
+            const upcomingList = document.getElementById('upcoming-list');
+            
+            currentList.innerHTML = lang('currentList').map(item => 
+                `<li class="flex items-start space-x-3">
+                    <span class="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                    <span>${item}</span>
+                </li>`
+            ).join('');
+
+            upcomingList.innerHTML = lang('upcomingList').map(item => 
+                `<li class="text-gray-200">${item}</li>`
+            ).join('');
+            
+            // Interface éléments
+            document.getElementById('flag').src = flags[currentLang];
+            document.getElementById('lang-code').textContent = langCodes[currentLang];
+            document.documentElement.lang = currentLang;
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('language', currentLang);
+            updateContent();
+        }
+
+        // Initialisation
+        updateContent();
+    </script>
+</body>
+</html>
