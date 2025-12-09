@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'SportingGrotesque';
+    src: url('../fonts/SportingGrotesque-Regular.html') format('woff2'),
+    url('../fonts/SportingGrotesque-Regular-2.html') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SportingGrotesque';
+    src: url('../fonts/SportingGrotesque-Bold.html') format('woff2'),
+    url('../fonts/SportingGrotesque-Bold-2.html') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
