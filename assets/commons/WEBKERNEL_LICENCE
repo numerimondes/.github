@@ -1,0 +1,240 @@
+WEBKERNEL UNIFIED LICENSE DOCUMENT
+Version 1.1 — Issued by Numerimondes
+Founder and Architect: El Moumen Yassine
+Numerimondes — Registered Company, Casablanca, Morocco
+Web: www.numerimondes.com
+Webkernel: https://webkernelphp.com/
+Contact: https://www.linkedin.com/in/elmoumenyassine/ — +212 6 2099 0692
+
+---
+
+PRELIMINARY NOTICE
+
+This document constitutes the complete and unified license framework governing all use of the Webkernel software ecosystem. It applies to all recipients, whether individuals, enterprises, critical infrastructure operators, financial institutions, or sovereign institutions. Depending on the tier under which the Software is accessed, specific parts of this document apply. All parties are encouraged to read Part I and Part V in their entirety regardless of tier.
+
+---
+
+PART I — GENERAL DEFINITIONS AND ARCHITECTURE
+
+1. About Webkernel
+
+Webkernel is a PHP-based software core developed and maintained by Numerimondes, a company registered at the Registry of Commerce of Casablanca, Morocco. Webkernel is built upon and depends on Laravel, FilamentPHP, Livewire, and related open-source PHP ecosystem components, each of which remains subject to their own respective licenses.
+
+The mission of Webkernel is to enable businesses, institutions, and governments to become true owners of their code and infrastructure, reduce technology dependency costs, and operate with full sovereignty over their digital environment, while remaining part of a sustainable, supported ecosystem governed by Numerimondes.
+
+Webkernel is a registered trademark of Numerimondes. All rights not expressly granted herein are reserved.
+
+2. Key Distinctions
+
+The following distinctions are fundamental to understanding this License.
+
+The Webkernel Core refers to the foundational software kernel: the bootstrap logic, integrity verification system, initialization layer, and core architecture files maintained exclusively by Numerimondes. The Core is the subject of the integrity and governance rules described throughout this document.
+
+A Webkernel Instance refers to a deployed application built upon the Webkernel Core. An Instance is operated by a Licensee, configured for a specific environment, and may include modules, customizations, and integrations layered above the Core.
+
+A Webkernel Module refers to a discrete software package that extends the functionality of a Webkernel Instance. Modules are classified as follows.
+
+First-Party Modules are developed and distributed by Numerimondes. They may be standard modules available freely or for purchase through https://webkernelphp.com/, or custom modules developed by Numerimondes on behalf of a specific Licensee under a separate services agreement.
+
+Second-Party Modules are developed by the Licensee or its own development team for internal use within their own Instance. Such modules may be loaded from a private or public GitHub repository, deposited directly into the application directory, or retrieved from https://webkernelphp.com/ if published there by the Licensee.
+
+Third-Party Modules are developed by independent developers and made available through https://webkernelphp.com/ or other authorized channels. Numerimondes does not warrant third-party modules unless expressly stated in writing.
+
+3. The Core Is Free. Modules Are Licensed.
+
+The Webkernel Core is made available at no charge under the terms of Part II of this document. There is no license fee for using the Core. Numerimondes may offer paid services around the Core, including technical support, maintenance, onboarding assistance, and certified deployment programs, but the Core itself is not a paid product.
+
+Licensing fees, where applicable, apply exclusively to First-Party Modules commercialized by Numerimondes, and to optional paid services. This structure is intentional: Numerimondes believes the Core should be accessible to all, and that value is delivered through the module ecosystem and professional services.
+
+4. Perpetual Ownership of Modules
+
+Numerimondes is committed to perpetual ownership for all First-Party Modules purchased by Licensees. When a Licensee purchases a First-Party Module, they acquire a perpetual license to use the version of that module at the time of purchase. That right does not expire, is not revoked upon subscription termination, and is not contingent on continued payment.
+
+Updates to a purchased First-Party Module may be subject to an annual update fee. This fee shall never exceed twenty-five percent (25%) of the original purchase price inclusive of all applicable taxes, per year. Update fees are optional. A Licensee who declines to pay update fees retains the right to continue using the version of the module they have already purchased.
+
+5. Pricing and Taxes
+
+All prices for First-Party Modules and paid services published by Numerimondes on https://webkernelphp.com/ are displayed inclusive of all applicable taxes (TTC) based on the country of the purchaser at the time of purchase. Numerimondes reserves the right to adjust pricing by jurisdiction in accordance with applicable tax law.
+
+6. Why Core Integrity Matters
+
+The Webkernel Core contains the bootstrap directory and integrity verification layer that guarantees the authenticity, security, and interoperability of all Webkernel Instances and Modules. Because Instances may dynamically load Modules from diverse sources including public repositories, private repositories, and the Webkernel marketplace, the integrity of the Core is the single technical guarantee that the entire ecosystem remains trustworthy and compliant.
+
+Any modification to the Core bootstrap directory undermines the integrity chain across the entire Instance, making it impossible for Numerimondes to certify, support, warrant, or guarantee the behavior of that deployment. This is not a commercial constraint. It is a technical necessity that protects the Licensee as much as it protects Numerimondes.
+
+---
+
+PART II — FREE OPEN SOURCE LICENSE (WEBKERNEL FREE TIER)
+
+This Part applies to any person or entity using the Webkernel Core under the free open-source tier. This tier is governed by, and incorporates by reference, the Eclipse Public License, Version 2.0 (EPL-2.0), available at https://www.eclipse.org/legal/epl-2.0/, subject to the additional conditions set forth herein. In case of conflict, the additional conditions below shall prevail.
+
+1. Grant of Rights
+
+Subject to the terms of this Part and the EPL-2.0, Numerimondes grants any person a worldwide, royalty-free, non-exclusive license to use, study, modify, and distribute the following components of the Webkernel Core for any lawful purpose.
+
+2. Components Available Under This Tier
+
+The following components are distributed under this tier: the Webkernel Core kernel source code, init-instance.php, and verify-integrity.php in remote verification mode only.
+
+The following components are not available under this tier: kernel.json, any sealed configuration data, local verification functionality, setup-keys.php, seal-release.php, and sovereign compliance modules.
+
+3. Module Development
+
+Licensees under this tier are free to develop, load, and use Second-Party Modules within their Webkernel Instance. First-Party Modules are subject to their individual module licenses as published on https://webkernelphp.com/. Third-Party Modules may be loaded subject to their own respective licenses.
+
+4. Limitations
+
+Local verification functionality is not available under this tier. Sealed configuration data is not available under this tier. Any modification of the bootstrap directory voids eligibility for Official Recognition, certification, and any support from Numerimondes. Numerimondes provides no warranty, indemnity, or support under this tier.
+
+5. Disclaimer of Warranties
+
+THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. NUMERIMONDES DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE OR UNINTERRUPTED.
+
+6. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NUMERIMONDES SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING FROM USE OF THE SOFTWARE UNDER THIS TIER.
+
+---
+
+PART III — MODULE LICENSE (WEBKERNEL COMMERCIAL MODULES)
+
+This Part applies to any individual, enterprise, or institution that purchases or uses a First-Party Module distributed by Numerimondes. Use of the Webkernel Core does not require acceptance of this Part. This Part applies only when a First-Party Module is acquired.
+
+1. Grant of Rights
+
+Upon purchase of a First-Party Module, Numerimondes grants Licensee a perpetual, non-exclusive, non-transferable license to use that module within one or more Webkernel Instances operated by the Licensee. The license is perpetual as defined in Part I, Section 4.
+
+2. Scope of License
+
+The module license covers the version of the module at the time of purchase and any updates the Licensee chooses to acquire. It does not extend to resale, redistribution, sublicensing, or use by third parties outside the Licensee's own organization, unless a separate reseller or partner agreement is executed with Numerimondes.
+
+3. Update Policy
+
+Numerimondes may release updates to First-Party Modules. Licensee may choose to acquire updates. Annual update fees, if any, shall not exceed twenty-five percent (25%) of the original module purchase price inclusive of all applicable taxes. Declining updates does not affect the perpetual right to use the purchased version.
+
+4. Free First-Party Modules
+
+Some First-Party Modules are distributed free of charge. Such modules are subject to the terms of this Part except that no purchase price or update fee applies. Numerimondes reserves the right to introduce fees for future versions of currently free modules, provided that the version available at the time of free acquisition remains freely usable under its original terms.
+
+5. Module Integrity and Core Dependency
+
+All First-Party Modules are designed to operate on an unmodified Webkernel Core bootstrap directory. Numerimondes does not warrant the behavior of any First-Party Module deployed on an Instance whose bootstrap directory has been modified.
+
+6. Disclaimer and Limitation of Liability
+
+First-Party Modules are provided with a limited warranty of functional conformity to their published specifications for twelve (12) months from the date of purchase, subject to use on a Certified Deployment. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NUMERIMONDES' TOTAL LIABILITY WITH RESPECT TO ANY MODULE SHALL NOT EXCEED THE PURCHASE PRICE PAID FOR THAT MODULE.
+
+---
+
+PART IV — PROFESSIONAL SERVICES LICENSE (SUPPORT, MAINTENANCE, AND ONBOARDING)
+
+This Part applies to any Licensee who engages Numerimondes for paid professional services. These services are distinct from and supplementary to the Core and Module licenses.
+
+1. Available Services
+
+Numerimondes offers, at its discretion and subject to separate service agreements, the following categories of professional services: technical support for Core deployments and First-Party Modules, maintenance and security patch delivery, onboarding and deployment assistance, custom First-Party Module development, and certified deployment programs.
+
+2. No Obligation
+
+Use of the Webkernel Core and purchased modules does not obligate any Licensee to purchase professional services. Services are optional and governed by separate service agreements which incorporate the terms of this document by reference.
+
+3. Service Agreements
+
+Specific terms, pricing, response times, and deliverables for professional services are defined in individual service agreements executed between Numerimondes and the Licensee. In case of conflict between a service agreement and this document, the service agreement shall prevail with respect to service-specific terms.
+
+---
+
+PART V — CRITICAL INFRASTRUCTURE AND SOVEREIGN LICENSE (WEBKERNEL SOVEREIGN TIER)
+
+This Part applies to sovereign authorities, recognized governmental institutions, and operators of critical infrastructure and regulated industries including but not limited to banking and financial institutions, telecommunications operators, energy providers, healthcare systems, and any entity subject to national critical infrastructure regulation. Access to this tier requires execution of a formal written agreement with Numerimondes.
+
+1. Eligibility
+
+This tier is available to the following categories of entities upon execution of a formal agreement with Numerimondes: recognized national governments, ministries, governmental agencies, and public institutions; operators of nationally designated critical infrastructure; licensed financial institutions including banks, insurance companies, and payment processors; telecommunications and energy operators subject to national regulation; and any entity that can demonstrate a justified operational need for the extended rights and components provided under this tier.
+
+This tier is not available to private individuals or general commercial enterprises unless they qualify under the categories above.
+
+2. Grant of Rights
+
+Subject to the formal agreement, Numerimondes grants the Sovereign Licensee a non-transferable license to install and operate Webkernel within its infrastructure, use the Jurisdiction-Specific or Institution-Specific Sealed Configuration, operate verify-integrity.php in both remote and local modes, and use setup-keys.php, seal-release.php, and compliance modules for jurisdiction-specific or institution-specific key management, release operations, and regulatory compliance.
+
+3. Components Available Under This Tier
+
+The following components are distributed under this tier: kernel.json (sealed and tailored to the Licensee's jurisdiction or institutional context), init-instance.php, verify-integrity.php (remote and local modes), setup-keys.php, seal-release.php, and compliance modules as specified in the formal agreement.
+
+4. Module Ecosystem
+
+Sovereign Licensees may use all First-Party Modules under the terms of Part III, develop and load Second-Party Modules from any authorized source, and access Third-Party Modules through https://webkernelphp.com/. Custom compliance modules may be developed by Numerimondes under the formal agreement.
+
+5. Core Integrity Condition
+
+Sovereign Licensee shall not modify, alter, replace, or tamper with any file within the bootstrap directory. This condition is technically necessary to guarantee the security, compliance, authenticity, and interoperability of the deployment. Modifications and extensions outside the bootstrap directory, including compliance modules, jurisdiction-specific configurations, and Second-Party Modules, are fully permitted and supported.
+
+6. Operational Autonomy
+
+Sovereign Licensee retains full operational autonomy over its deployment within its jurisdiction or operational domain. Numerimondes does not access, monitor, or control the Sovereign Licensee's operational data or configurations without express written authorization.
+
+7. Global Custodianship
+
+Numerimondes retains the role of Global Custodian of the Webkernel Core architecture. This means Numerimondes maintains the integrity, security standards, and evolution of the Core and makes updates available under the formal agreement. This role does not confer upon Numerimondes any authority over the Sovereign Licensee's operations, data, or governance.
+
+8. Support, Updates, and Maintenance
+
+Numerimondes shall provide direct technical support, security patches, Core updates, compliance module updates, and maintenance services as specified in the formal agreement.
+
+9. Confidentiality
+
+All Sealed Configurations, key material, and technical specifications exchanged under this tier are strictly confidential and shall not be disclosed to any third party without prior written consent of both parties.
+
+10. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW AND THE FORMAL AGREEMENT, NUMERIMONDES' LIABILITY SHALL BE LIMITED TO DIRECT DAMAGES NOT EXCEEDING THE FEES PAID UNDER THE FORMAL AGREEMENT IN THE PRECEDING TWELVE MONTHS. NEITHER PARTY SHALL BE LIABLE FOR INDIRECT, CONSEQUENTIAL, OR SPECIAL DAMAGES.
+
+11. Dispute Resolution
+
+This tier and its formal agreement shall be governed by the laws of Morocco, unless the formal agreement specifies an alternative governing law acceptable to both parties. Disputes shall be resolved through good-faith negotiation, and if unresolved, through arbitration under the rules of the International Chamber of Commerce, seated in Casablanca, Morocco, unless otherwise agreed.
+
+---
+
+PART VI — GENERAL PROVISIONS (ALL TIERS)
+
+1. Governance and Stewardship
+
+Numerimondes retains exclusive authority over the evolution, certification, and official distribution of the Webkernel Core architecture. Community contributions may be submitted for review but do not confer any right to alter governance of the Core or the certified bootstrap directory.
+
+2. Trademark
+
+This document does not grant any right to use the Webkernel trademark or the Numerimondes name in any manner that implies endorsement, certification, or official recognition of a modified or uncertified deployment.
+
+3. Dependency Licenses
+
+Webkernel depends upon Laravel, FilamentPHP, Livewire, and related open-source components. Each such dependency remains subject to its own license. Nothing in this document modifies or supersedes those licenses.
+
+4. Third-Party Module Disclaimer
+
+Numerimondes does not warrant, certify, or assume liability for Third-Party Modules unless expressly stated in writing.
+
+5. Severability
+
+If any provision of this document is held invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+6. Entire Agreement
+
+This document, together with any applicable formal agreement, service agreement, or order form, constitutes the entire agreement between the parties with respect to the Webkernel software and supersedes all prior understandings, representations, or agreements relating thereto.
+
+7. Governing Law (Free and Commercial Tiers)
+
+This document shall be governed by the laws of Morocco. Disputes arising under the Free Tier or the Module License shall be subject to the exclusive jurisdiction of the competent courts of Casablanca, Morocco.
+
+8. Contact and Official Channels
+
+Numerimondes — Registered Company, Casablanca, Morocco
+Website: www.numerimondes.com
+Webkernel Platform: https://webkernelphp.com/
+Founder and Architect: El Moumen Yassine
+LinkedIn: https://www.linkedin.com/in/elmoumenyassine/
+Phone: +212 6 2099 0692
+
+---
+
+By using, downloading, activating, or deploying any component of the Webkernel software ecosystem, the Licensee accepts the terms of the applicable tier set forth in this document and acknowledges Numerimondes as the sole steward and trademark owner of the Webkernel architecture.
