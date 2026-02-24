@@ -1,5 +1,5 @@
 WEBKERNEL UNIFIED LICENSE DOCUMENT
-Version 1.1 — Issued by Numerimondes
+Version 1.2 — Issued by Numerimondes
 Founder and Architect: El Moumen Yassine
 Numerimondes — Registered Company, Casablanca, Morocco
 Web: www.numerimondes.com
@@ -10,7 +10,7 @@ Contact: https://www.linkedin.com/in/elmoumenyassine/ — +212 6 2099 0692
 
 PRELIMINARY NOTICE
 
-This document constitutes the complete and unified license framework governing all use of the Webkernel software ecosystem. It applies to all recipients, whether individuals, enterprises, critical infrastructure operators, financial institutions, or sovereign institutions. Depending on the tier under which the Software is accessed, specific parts of this document apply. All parties are encouraged to read Part I and Part V in their entirety regardless of tier.
+This document constitutes the complete and unified license framework governing all use of the Webkernel software ecosystem. It applies to all recipients, whether individuals, enterprises, critical infrastructure operators, financial institutions, or sovereign institutions. Depending on the tier under which the Software is accessed, specific parts of this document apply. All parties are encouraged to read Part I and Part VI in their entirety regardless of tier.
 
 ---
 
@@ -54,13 +54,17 @@ Updates to a purchased First-Party Module may be subject to an annual update fee
 
 5. Pricing and Taxes
 
-All prices for First-Party Modules and paid services published by Numerimondes on https://webkernelphp.com/ are displayed inclusive of all applicable taxes (TTC) based on the country of the purchaser at the time of purchase. Numerimondes reserves the right to adjust pricing by jurisdiction in accordance with applicable tax law.
+All prices for First-Party Modules and paid services published by Numerimondes on https://webkernelphp.com/ are displayed inclusive of all applicable taxes based on the country of the purchaser at the time of purchase. Numerimondes reserves the right to adjust pricing by jurisdiction in accordance with applicable tax law.
 
 6. Why Core Integrity Matters
 
 The Webkernel Core contains the bootstrap directory and integrity verification layer that guarantees the authenticity, security, and interoperability of all Webkernel Instances and Modules. Because Instances may dynamically load Modules from diverse sources including public repositories, private repositories, and the Webkernel marketplace, the integrity of the Core is the single technical guarantee that the entire ecosystem remains trustworthy and compliant.
 
 Any modification to the Core bootstrap directory undermines the integrity chain across the entire Instance, making it impossible for Numerimondes to certify, support, warrant, or guarantee the behavior of that deployment. This is not a commercial constraint. It is a technical necessity that protects the Licensee as much as it protects Numerimondes.
+
+7. Verification Modes
+
+Webkernel supports two integrity verification modes. Remote verification is the standard mode available to all tiers. It operates by communicating with Numerimondes' verification servers to confirm the integrity and authenticity of the Core and activated modules. Local verification is an advanced mode that allows a deployment to perform integrity checks entirely within its own infrastructure, without any outbound connection to Numerimondes' servers. Local verification is available exclusively under the Sovereign Tier described in Part V, or where expressly authorized in writing by Numerimondes under a separate agreement. This distinction is architecturally significant: local verification enables fully air-gapped deployments, which is a capability unique to the Sovereign Tier and essential for environments where external network communication is prohibited or restricted by regulation or security policy.
 
 ---
 
@@ -76,7 +80,7 @@ Subject to the terms of this Part and the EPL-2.0, Numerimondes grants any perso
 
 The following components are distributed under this tier: the Webkernel Core kernel source code, init-instance.php, and verify-integrity.php in remote verification mode only.
 
-The following components are not available under this tier: kernel.json, any sealed configuration data, local verification functionality, setup-keys.php, seal-release.php, and sovereign compliance modules.
+The following components are not available under this tier: kernel.json, any sealed configuration data, local verification functionality, setup-keys.php, seal-release.php, and sovereign or institutional compliance modules.
 
 3. Module Development
 
@@ -108,19 +112,27 @@ Upon purchase of a First-Party Module, Numerimondes grants Licensee a perpetual,
 
 The module license covers the version of the module at the time of purchase and any updates the Licensee chooses to acquire. It does not extend to resale, redistribution, sublicensing, or use by third parties outside the Licensee's own organization, unless a separate reseller or partner agreement is executed with Numerimondes.
 
-3. Update Policy
+3. Activation and Remote Verification
+
+All First-Party Modules are subject to an activation process upon installation. Activation is performed by communicating with Numerimondes' remote verification servers via verify-integrity.php. This remote verification confirms the authenticity of the module, validates the Licensee's entitlement, and ensures the integrity of the deployment. Remote verification requires that the Instance have outbound network access to Numerimondes' verification infrastructure at the time of activation and at periodic intervals thereafter as specified in the module documentation.
+
+Local verification, meaning the ability to perform integrity checks without any outbound connection to Numerimondes' servers, is not included under this tier. Licensees operating in restricted network environments who require local verification capability must contact Numerimondes to discuss eligibility for the Sovereign Tier described in Part V, or to request a specific written authorization under a separate agreement.
+
+Numerimondes commits to maintaining the availability and reliability of its remote verification infrastructure. In the event of planned or unplanned downtime of verification servers, Numerimondes will implement reasonable grace periods during which already-activated modules continue to function without interruption.
+
+4. Update Policy
 
 Numerimondes may release updates to First-Party Modules. Licensee may choose to acquire updates. Annual update fees, if any, shall not exceed twenty-five percent (25%) of the original module purchase price inclusive of all applicable taxes. Declining updates does not affect the perpetual right to use the purchased version.
 
-4. Free First-Party Modules
+5. Free First-Party Modules
 
 Some First-Party Modules are distributed free of charge. Such modules are subject to the terms of this Part except that no purchase price or update fee applies. Numerimondes reserves the right to introduce fees for future versions of currently free modules, provided that the version available at the time of free acquisition remains freely usable under its original terms.
 
-5. Module Integrity and Core Dependency
+6. Module Integrity and Core Dependency
 
 All First-Party Modules are designed to operate on an unmodified Webkernel Core bootstrap directory. Numerimondes does not warrant the behavior of any First-Party Module deployed on an Instance whose bootstrap directory has been modified.
 
-6. Disclaimer and Limitation of Liability
+7. Disclaimer and Limitation of Liability
 
 First-Party Modules are provided with a limited warranty of functional conformity to their published specifications for twelve (12) months from the date of purchase, subject to use on a Certified Deployment. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NUMERIMONDES' TOTAL LIABILITY WITH RESPECT TO ANY MODULE SHALL NOT EXCEED THE PURCHASE PRICE PAID FOR THAT MODULE.
 
@@ -146,13 +158,13 @@ Specific terms, pricing, response times, and deliverables for professional servi
 
 PART V — CRITICAL INFRASTRUCTURE AND SOVEREIGN LICENSE (WEBKERNEL SOVEREIGN TIER)
 
-This Part applies to sovereign authorities, recognized governmental institutions, and operators of critical infrastructure and regulated industries including but not limited to banking and financial institutions, telecommunications operators, energy providers, healthcare systems, and any entity subject to national critical infrastructure regulation. Access to this tier requires execution of a formal written agreement with Numerimondes.
+This Part applies to sovereign authorities, recognized governmental institutions, and operators of critical infrastructure and regulated industries. Access to this tier requires execution of a formal written agreement with Numerimondes.
 
 1. Eligibility
 
-This tier is available to the following categories of entities upon execution of a formal agreement with Numerimondes: recognized national governments, ministries, governmental agencies, and public institutions; operators of nationally designated critical infrastructure; licensed financial institutions including banks, insurance companies, and payment processors; telecommunications and energy operators subject to national regulation; and any entity that can demonstrate a justified operational need for the extended rights and components provided under this tier.
+This tier is available to the following categories of entities upon execution of a formal agreement with Numerimondes: recognized national governments, ministries, governmental agencies, and public institutions; operators of nationally designated critical infrastructure including energy, water, transportation, and telecommunications; licensed financial institutions including banks, central banks, insurance companies, and payment processors; healthcare systems and institutions subject to national health data regulation; and any entity that can demonstrate a justified operational need for the extended rights and components provided under this tier, in particular the need to operate in air-gapped or network-restricted environments.
 
-This tier is not available to private individuals or general commercial enterprises unless they qualify under the categories above.
+This tier is not available to general commercial enterprises unless they qualify under one of the categories above or receive express written authorization from Numerimondes.
 
 2. Grant of Rights
 
@@ -162,35 +174,39 @@ Subject to the formal agreement, Numerimondes grants the Sovereign Licensee a no
 
 The following components are distributed under this tier: kernel.json (sealed and tailored to the Licensee's jurisdiction or institutional context), init-instance.php, verify-integrity.php (remote and local modes), setup-keys.php, seal-release.php, and compliance modules as specified in the formal agreement.
 
-4. Module Ecosystem
+4. Air-Gapped and Local Verification
 
-Sovereign Licensees may use all First-Party Modules under the terms of Part III, develop and load Second-Party Modules from any authorized source, and access Third-Party Modules through https://webkernelphp.com/. Custom compliance modules may be developed by Numerimondes under the formal agreement.
+A defining capability of this tier is the ability to operate Webkernel in fully air-gapped environments. Sovereign Licensees are granted access to local verification mode, which enables all integrity checks to be performed entirely within the Licensee's own infrastructure, with no outbound connection to Numerimondes' servers required at any point during normal operation. This capability is designed for environments where external network communication is prohibited, restricted, or considered a security risk, including classified government networks, isolated financial clearing systems, national health data infrastructure, and military or defense adjacent systems. Numerimondes provides the necessary cryptographic tooling, key management utilities, and documentation to enable and maintain fully autonomous local verification under this tier.
 
-5. Core Integrity Condition
+5. Module Ecosystem
 
-Sovereign Licensee shall not modify, alter, replace, or tamper with any file within the bootstrap directory. This condition is technically necessary to guarantee the security, compliance, authenticity, and interoperability of the deployment. Modifications and extensions outside the bootstrap directory, including compliance modules, jurisdiction-specific configurations, and Second-Party Modules, are fully permitted and supported.
+Sovereign Licensees may use all First-Party Modules under the terms of Part III, with local verification applicable in place of remote verification where the formal agreement so specifies. Sovereign Licensees may develop and load Second-Party Modules from any authorized source and access Third-Party Modules through https://webkernelphp.com/. Custom compliance modules may be developed by Numerimondes under the formal agreement.
 
-6. Operational Autonomy
+6. Core Integrity Condition
 
-Sovereign Licensee retains full operational autonomy over its deployment within its jurisdiction or operational domain. Numerimondes does not access, monitor, or control the Sovereign Licensee's operational data or configurations without express written authorization.
+Sovereign Licensee shall not modify, alter, replace, or tamper with any file within the bootstrap directory. This condition is technically necessary to guarantee the security, compliance, authenticity, and interoperability of the deployment, including the correct functioning of local verification. Modifications and extensions outside the bootstrap directory, including compliance modules, jurisdiction-specific configurations, and Second-Party Modules, are fully permitted and supported.
 
-7. Global Custodianship
+7. Operational Autonomy
 
-Numerimondes retains the role of Global Custodian of the Webkernel Core architecture. This means Numerimondes maintains the integrity, security standards, and evolution of the Core and makes updates available under the formal agreement. This role does not confer upon Numerimondes any authority over the Sovereign Licensee's operations, data, or governance.
+Sovereign Licensee retains full operational autonomy over its deployment within its jurisdiction or operational domain. Numerimondes does not access, monitor, or control the Sovereign Licensee's operational data or configurations without express written authorization. The air-gapped capability described in Section 4 is specifically designed to reinforce and guarantee this autonomy at the technical level.
 
-8. Support, Updates, and Maintenance
+8. Global Custodianship
 
-Numerimondes shall provide direct technical support, security patches, Core updates, compliance module updates, and maintenance services as specified in the formal agreement.
+Numerimondes retains the role of Global Custodian of the Webkernel Core architecture. This means Numerimondes maintains the integrity, security standards, and evolution of the Core and makes updates available under the formal agreement. This role does not confer upon Numerimondes any authority over the Sovereign Licensee's operations, data, or governance. Updates may be delivered through secure offline channels where required by the Sovereign Licensee's security policy.
 
-9. Confidentiality
+9. Support, Updates, and Maintenance
+
+Numerimondes shall provide direct technical support, security patches, Core updates, compliance module updates, and maintenance services as specified in the formal agreement. Delivery mechanisms for updates, including offline or air-gapped delivery, shall be defined in the formal agreement.
+
+10. Confidentiality
 
 All Sealed Configurations, key material, and technical specifications exchanged under this tier are strictly confidential and shall not be disclosed to any third party without prior written consent of both parties.
 
-10. Limitation of Liability
+11. Limitation of Liability
 
 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW AND THE FORMAL AGREEMENT, NUMERIMONDES' LIABILITY SHALL BE LIMITED TO DIRECT DAMAGES NOT EXCEEDING THE FEES PAID UNDER THE FORMAL AGREEMENT IN THE PRECEDING TWELVE MONTHS. NEITHER PARTY SHALL BE LIABLE FOR INDIRECT, CONSEQUENTIAL, OR SPECIAL DAMAGES.
 
-11. Dispute Resolution
+12. Dispute Resolution
 
 This tier and its formal agreement shall be governed by the laws of Morocco, unless the formal agreement specifies an alternative governing law acceptable to both parties. Disputes shall be resolved through good-faith negotiation, and if unresolved, through arbitration under the rules of the International Chamber of Commerce, seated in Casablanca, Morocco, unless otherwise agreed.
 
@@ -222,7 +238,7 @@ If any provision of this document is held invalid or unenforceable, the remainin
 
 This document, together with any applicable formal agreement, service agreement, or order form, constitutes the entire agreement between the parties with respect to the Webkernel software and supersedes all prior understandings, representations, or agreements relating thereto.
 
-7. Governing Law (Free and Commercial Tiers)
+7. Governing Law (Free Tier and Module License)
 
 This document shall be governed by the laws of Morocco. Disputes arising under the Free Tier or the Module License shall be subject to the exclusive jurisdiction of the competent courts of Casablanca, Morocco.
 
